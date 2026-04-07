@@ -176,6 +176,7 @@
       border-radius: 10px;
       margin-left: 7px;
       vertical-align: middle;
+      letter-spacing: 0;
     }
 
     /* ── 저서 및 논문 ── */
@@ -236,11 +237,18 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+      transition: all 0.2s;
+      text-decoration: none;
     }
-    .paper-item:hover { border-color: var(--blue-mid); background: #fff; }
+    .paper-item:hover { 
+      border-color: var(--blue-mid); 
+      background: #fff; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
     .paper-tag { font-size: 0.7rem; font-weight: 800; color: var(--blue-mid); text-transform: uppercase; }
-    .paper-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+    .paper-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; justify-content: space-between; }
     .paper-info { font-size: 0.85rem; color: var(--text-gray); }
+    .paper-link-icon { font-size: 0.8rem; color: var(--blue-light); opacity: 0.5; }
 
     /* ── 칼럼 ── */
     #columns { background: var(--blue-pale); }
@@ -381,7 +389,6 @@
 <!-- ② 연구소 소개 -->
 <section id="about">
   <div class="inner">
-    <!-- 요청하신 우측 로고 배치 적용 -->
     <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.5px solid var(--blue-light); margin-bottom: 36px; padding-bottom: 12px;">
       <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--blue-dark); margin-bottom:0; border-bottom:none;">회사 소개 <span style="color: var(--blue-light); font-weight: 400; font-size: 0.9rem; margin-left: 10px;">About Us</span></h2>
       <img src="well.png" alt="로고" style="width: 150px; height: auto;" class="rounded-md shadow-sm" />
@@ -439,10 +446,9 @@
   </div>
 </section>
 
-<!-- ④ 저서 및 논문 (통합 반영) -->
+<!-- ④ 저서 및 논문 -->
 <section id="publications">
   <div class="inner">
-    <!-- 저서 섹션 -->
     <h2 class="section-title">주요 저서 <span>Publications</span></h2>
     <div class="books-grid">
       <div class="book-card">
@@ -459,54 +465,103 @@
       </div>
     </div>
 
-    <!-- 논문 섹션 (누락되었던 부분 추가) -->
+    <!-- 구체적인 논문 링크 6개 반영 -->
     <h2 class="section-title">주요 논문 및 연구 <span>Research & Papers</span></h2>
     <div class="paper-list">
-      <div class="paper-item">
+      <!-- 학위 논문 -->
+      <a href="https://library.yonsei.ac.kr/" target="_blank" class="paper-item">
         <span class="paper-tag">Doctoral Dissertation</span>
-        <h4 class="paper-title">도시 독거노인의 지속 거주(Aging in Place) 경험에 관한 연구</h4>
+        <h4 class="paper-title">도시 독거노인의 지속 거주(Aging in Place) 경험에 관한 연구 <span class="paper-link-icon">↗</span></h4>
         <p class="paper-info">연세대학교 사회복지전문대학원 | 2017</p>
-      </div>
-      <div class="paper-item">
-        <span class="paper-tag">KIHASA Research</span>
-        <h4 class="paper-title">일본의 고령자 거주 시설 및 케어 서비스 관련 법제도 현황</h4>
-        <p class="paper-info">국제사회보장리뷰 제5호 | 한국보건사회연구원 | 2018</p>
-      </div>
-      <div class="paper-item">
-        <span class="paper-tag">KIHASA Research</span>
-        <h4 class="paper-title">일본의 지역포괄케어 시스템 구축 현황과 과제</h4>
-        <p class="paper-info">국제사회보장리뷰 | 한국보건사회연구원 | 2019</p>
-      </div>
-      <div class="paper-item">
-        <span class="paper-tag">KIHASA Research</span>
-        <h4 class="paper-title">일본의 장기요양보험제도와 주거복지 서비스 연계 체계 분석</h4>
-        <p class="paper-info">국제사회보장리뷰 | 한국보건사회연구원 | 2020</p>
-      </div>
+      </a>
+
+      <!-- KIHASA 국외연구 1 -->
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/320/journal-26-%EA%B0%80%EC%9D%84-101.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 26</span>
+        <h4 class="paper-title">일본의 고령자 거주 시설 및 케어 서비스 관련 법제도 현황 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2018 가을호 | 한국보건사회연구원</p>
+      </a>
+
+      <!-- KIHASA 국외연구 2 -->
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/343/journal-28-%EB%B4%84-128.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 28</span>
+        <h4 class="paper-title">일본의 지역포괄케어 시스템 구축 현황과 과제 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2019 봄호 | 한국보건사회연구원</p>
+      </a>
+
+      <!-- KIHASA 국외연구 3 -->
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/345/journal-29-%EC%97%AC%EB%A6%84-109.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 29</span>
+        <h4 class="paper-title">일본의 고령자 주거와 돌봄 서비스 연계 체계 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2019 여름호 | 한국보건사회연구원</p>
+      </a>
+
+      <!-- KIHASA 국외연구 4 -->
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/365/journal-30-%EA%B0%80%EC%9D%84-138.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 30</span>
+        <h4 class="paper-title">일본의 장기요양보험제도와 주거복지 서비스 연계 분석 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2019 가을호 | 한국보건사회연구원</p>
+      </a>
+
+      <!-- KIHASA 국외연구 5 -->
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/389/journal-32-%EB%B4%84-131.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 32</span>
+        <h4 class="paper-title">일본의 '고령자 주거 안정 확보 법률' 개정 동향 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2020 봄호 | 한국보건사회연구원</p>
+      </a>
+
+      <!-- KIHASA 국외연구 6 -->
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/402/journal-34-%EA%B0%80%EC%9D%84-121.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 34</span>
+        <h4 class="paper-title">일본의 포스트 코로나 시대 시니어 주거 정책 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2020 가을호 | 한국보건사회연구원</p>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ⑤ 목멱칼럼 -->
+<!-- ⑤ 목멱칼럼 (2026.04 추가 업데이트) -->
 <section id="columns">
   <div class="inner">
     <h2 class="section-title">이데일리 목멱칼럼 <span>Column</span></h2>
     <div class="column-list">
+      <!-- 최신 칼럼: 2026.04.07 -->
+      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank">
+        <div class="col-date">2026.04<br>07</div>
+        <div class="col-divider"></div>
+        <div class="col-title">시니어 하우징, '공급'을 넘어 '운영'의 시대로</div>
+        <div class="col-arrow">→</div>
+      </a>
+
+      <!-- 2026.03.04 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.03<br>04</div>
         <div class="col-divider"></div>
         <div class="col-title">누가 노인을 돌볼 것인가</div>
         <div class="col-arrow">→</div>
       </a>
+      
+      <!-- 2025.12.31 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01574406642404096&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.12<br>31</div>
         <div class="col-divider"></div>
         <div class="col-title">젊기만 한 도시, 늙어가는 인간</div>
         <div class="col-arrow">→</div>
       </a>
+      
+      <!-- 2025.10.01 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01515366642328656&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.10<br>01</div>
         <div class="col-divider"></div>
         <div class="col-title">돌봄은 건물을 짓는 일이 아니다</div>
+        <div class="col-arrow">→</div>
+      </a>
+
+      <!-- 2025.07.29 -->
+      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01512086642239440&mediaCodeNo=257" target="_blank">
+        <div class="col-date">2025.07<br>29</div>
+        <div class="col-divider"></div>
+        <div class="col-title">죽음은 삶의 일부다</div>
         <div class="col-arrow">→</div>
       </a>
     </div>
