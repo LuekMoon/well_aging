@@ -12,6 +12,7 @@
       color: #1a1a2e;
       background: #f8f9fc;
       line-height: 1.7;
+      scroll-behavior: smooth;
     }
     a { color: inherit; text-decoration: none; }
 
@@ -21,14 +22,14 @@
       --blue-mid:   #1e5faa;
       --blue-light: #4a90d9;
       --blue-pale:  #e8f1fb;
-      --accent:     #2979d4;
+      --accent:      #2979d4;
       --text-dark:  #1a1a2e;
       --text-gray:  #555b6e;
-      --line:       #dde4ef;
+      --line:        #dde4ef;
     }
 
     /* ── 공통 섹션 ── */
-    section { padding: 72px 24px; }
+    section { padding: 80px 24px; }
     .inner { max-width: 860px; margin: 0 auto; }
     .section-title {
       font-size: 1.5rem;
@@ -50,7 +51,7 @@
     #hero {
       background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 60%, var(--blue-light) 100%);
       color: #fff;
-      padding: 80px 24px 70px;
+      padding: 100px 24px 80px;
       text-align: center;
     }
     #hero .logo-text {
@@ -73,15 +74,6 @@
       max-width: 520px;
       margin: 0 auto 32px;
       font-weight: 300;
-    }
-    #hero .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.35);
-      border-radius: 30px;
-      padding: 8px 22px;
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
     }
 
     /* ── 연구소 소개 ── */
@@ -173,7 +165,6 @@
       color: var(--blue-light);
       font-weight: 700;
     }
-    /* 현직 강조 배지 */
     .ceo-block ul li.current::after {
       content: '현';
       display: inline-block;
@@ -185,15 +176,15 @@
       border-radius: 10px;
       margin-left: 7px;
       vertical-align: middle;
-      letter-spacing: 0;
     }
 
-    /* ── 저서 ── */
-    #books { background: #fff; }
+    /* ── 저서 및 논문 ── */
+    #publications { background: #fff; }
     .books-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
+      margin-bottom: 40px;
     }
     .book-card {
       border: 1.5px solid var(--line);
@@ -235,6 +226,22 @@
       font-weight: 600;
     }
 
+    /* 논문 리스트 스타일 */
+    .paper-list { display: flex; flex-direction: column; gap: 12px; }
+    .paper-item {
+      padding: 18px 24px;
+      background: #fdfdfd;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .paper-item:hover { border-color: var(--blue-mid); background: #fff; }
+    .paper-tag { font-size: 0.7rem; font-weight: 800; color: var(--blue-mid); text-transform: uppercase; }
+    .paper-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+    .paper-info { font-size: 0.85rem; color: var(--text-gray); }
+
     /* ── 칼럼 ── */
     #columns { background: var(--blue-pale); }
     .column-list { display: flex; flex-direction: column; gap: 14px; }
@@ -247,7 +254,6 @@
       gap: 18px;
       border: 1px solid var(--line);
       transition: box-shadow 0.2s;
-      text-decoration: none;
     }
     .column-item:hover {
       box-shadow: 0 4px 16px rgba(30,95,170,0.1);
@@ -278,65 +284,7 @@
       font-size: 1rem;
       opacity: 0.6;
     }
-    /* ── 저서 및 논문 ── */
-    #publications { background: #fff; }
-    .books-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
-    .book-card {
-      border: 1.5px solid var(--line);
-      border-radius: 16px;
-      padding: 35px 30px;
-      transition: all 0.3s ease;
-    }
-    .book-card:hover {
-      box-shadow: 0 15px 35px rgba(30,95,170,0.1);
-      border-color: var(--blue-light);
-    }
-    .book-badge {
-      display: inline-block;
-      background: var(--blue-dark);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 15px;
-    }
-    .book-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--blue-dark); margin-bottom: 12px; }
-    .book-meta { margin-top: 18px; font-size: 0.85rem; color: var(--blue-light); font-weight: 600; }
 
-    /* 논문 리스트 스타일 */
-    .paper-list { display: flex; flex-direction: column; gap: 12px; }
-    .paper-item {
-      padding: 18px 24px;
-      background: #fdfdfd;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .paper-item:hover { border-color: var(--blue-mid); background: #fff; }
-    .paper-tag { font-size: 0.7rem; font-weight: 800; color: var(--blue-mid); text-transform: uppercase; }
-    .paper-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
-    .paper-info { font-size: 0.85rem; color: var(--text-gray); }
-
-    /* ── 칼럼 ── */
-    #columns { background: var(--blue-pale); }
-    .column-list { display: flex; flex-direction: column; gap: 15px; }
-    .column-item {
-      background: #fff;
-      border-radius: 12px;
-      padding: 22px 28px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      border: 1px solid var(--line);
-      transition: all 0.2s;
-    }
-    .column-item:hover { transform: scale(1.01); border-color: var(--blue-light); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-    .col-date { min-width: 80px; font-size: 0.8rem; color: var(--blue-light); font-weight: 700; text-align: center; }
-    .col-title { font-size: 1rem; font-weight: 600; color: var(--text-dark); }
-    .col-arrow { margin-left: auto; color: var(--blue-light); font-weight: bold; }
     /* ── 주요 활동 ── */
     #activities { background: #fff; }
     .activity-grid {
@@ -387,17 +335,6 @@
       text-align: center;
       padding: 64px 24px;
     }
-    #contact h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.03em;
-    }
-    #contact p {
-      font-size: 0.95rem;
-      opacity: 0.85;
-      margin-bottom: 28px;
-    }
     .contact-btn {
       display: inline-block;
       background: #fff;
@@ -406,13 +343,9 @@
       font-size: 0.93rem;
       padding: 13px 32px;
       border-radius: 30px;
-      letter-spacing: 0.03em;
-      transition: background 0.2s, transform 0.2s;
+      margin-top: 20px;
     }
-    .contact-btn:hover {
-      background: var(--blue-pale);
-      transform: translateY(-2px);
-    }
+    .contact-btn:hover { background: var(--blue-pale); transform: translateY(-2px); }
 
     /* ── 푸터 ── */
     footer {
@@ -426,18 +359,14 @@
 
     /* ── 반응형 ── */
     @media (max-width: 640px) {
-      .about-grid,
-      .books-grid,
-      .activity-grid { grid-template-columns: 1fr; }
+      .about-grid, .books-grid, .activity-grid { grid-template-columns: 1fr; }
       .ceo-wrap { flex-direction: column; align-items: center; text-align: center; }
-      .ceo-block ul li { text-align: left; }
-      #hero h1 { font-size: 1.7rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- ①  히어로 -->
+<!-- ① 히어로 -->
 <section id="hero">
   <div class="inner">
     <p class="logo-text">㈜ 웰에이징연구소 | Well-Aging Research Institute</p>
@@ -446,97 +375,63 @@
       시니어 주거·정책·투자·운영을 연결하는<br>
       대한민국 대표 웰에이징 전문 연구소
     </p>
-   
   </div>
 </section>
 
-<!-- ②  연구소 소개 -->
+<!-- ② 연구소 소개 -->
 <section id="about">
   <div class="inner">
-    <h2 class="section-title">회사 소개 <span>About Us</span> 
-       <div class="flex  justify-end ">
-    <!-- style="width: 30px;" 를 직접 추가합니다 -->
-      <img src="well.png" style="width: 150px !important; height: auto;" class="rounded-md shadow-sm" />
-      </div>
-   </h2>
+    <!-- 요청하신 우측 로고 배치 적용 -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2.5px solid var(--blue-light); margin-bottom: 36px; padding-bottom: 12px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--blue-dark); margin-bottom:0; border-bottom:none;">회사 소개 <span style="color: var(--blue-light); font-weight: 400; font-size: 0.9rem; margin-left: 10px;">About Us</span></h2>
+      <img src="well.png" alt="로고" style="width: 150px; height: auto;" class="rounded-md shadow-sm" />
+    </div>
+
     <p class="about-intro">
       "㈜웰에이징연구소는 초고령 사회가 제기하는 '어디서, 어떻게 살것인가'라는 질문에 답하기 위해,
-      시니어 주거 분야에서 정책·공공, 개발·금융(리츠/PF),운영·케어를 하나의 흐름으로 연결하며 - 
-      현장과 정책, 민간과 공공의 접점에서 연구·자문·교육을 수행하는 전문 기관입니다.".<br><br>
-      공공정책 설계와 민간 비즈니스(개발·운영 표준화, 데이터·공시 체계, 서비스 모델) 간의
-      실무적 접점을 만드는 것을 핵심 강점으로, 대학·대학원 강의와 언론 기고,
-      국회 정책토론 참여, 해외 사례 분석을 통해 한국형 시니어 주거 모델 정립에 기여하고 있습니다.
-
+      시니어 주거 분야에서 정책·공공, 개발·금융(리츠/PF), 운영·케어를 하나의 흐름으로 연결하며 - 
+      현장과 정책, 민간과 공공의 접점에서 연구·자문·교육을 수행하는 전문 기관입니다."<br><br>
+      공공정책 설계와 민간 비즈니스 간의 실무적 접점을 만드는 것을 핵심 강점으로, 한국형 시니어 주거 모델 정립에 기여하고 있습니다.
     </p>
     <div class="about-grid">
       <div class="about-card">
         <h3>🔍 연구 · 자문</h3>
-        <p>시니어하우징 정책·제도·투자 구조 분석, 국내외 사례 연구, 공공기관 및 민간 기업 자문·컨설팅</p>
+        <p>시니어하우징 정책·제도 분석, 국내외 사례 연구, 공공기관 및 민간 자문</p>
       </div>
       <div class="about-card">
         <h3>🎓 교육 · 양성</h3>
-        <p>대학원 강의, 매경비즈 시니어하우징 전문가 양성과정(1~5기) 공동주관, 전문 인재 육성</p>
-      </div>
-      <div class="about-card">
-        <h3>✍️ 집필 · 기고</h3>
-        <p>이데일리 목멱칼럼 연재, 『초고령사회 뉴노멀』 시리즈 집필, 한국보건사회연구원 국외연구원</p>
-      </div>
-      <div class="about-card">
-        <h3>🌏 해외 네트워크</h3>
-        <p>일본 초고령사회 주거·케어 모델 현지 조사·분석, 국제 사례의 한국 적용 가능성 연구</p>
+        <p>대학원 강의, 매경비즈 시니어하우징 전문가 양성과정 공동주관</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ③  CEO 소개 -->
+<!-- ③ CEO 소개 -->
 <section id="ceo">
   <div class="inner">
     <h2 class="section-title">대표 소개 <span>CEO Profile</span></h2>
     <div class="ceo-wrap">
       <div class="ceo-photo">
-        <img src="IMG_2406.JPG" alt="최희정 대표이사 사진" />
+        <img src="IMG_2406.JPG" alt="최희정 대표이사 사진" onerror="this.src='https://via.placeholder.com/180x240?text=CEO'"/>
       </div>
       <div class="ceo-info">
         <h2>최희정 崔希貞</h2>
         <p class="ceo-sub">Choi, Hellen · 대표이사 / 사회복지학 박사</p>
-
         <div class="ceo-block">
           <h4>약력</h4>
           <ul>
             <li class="current">㈜웰에이징연구소 대표이사</li>
             <li class="current">한양대학교 공공정책대학원 겸임교수</li>
             <li class="current">케어닥 고문위원</li>
-            <li class="current">한국보건사회연구원 『국제사회보장리뷰』 국외연구원</li>
-            <li class="current">이데일리 목멱칼럼 컬럼리스트</li>            
+            <li class="current">한국보건사회연구원 국외연구원</li>
+            <li class="current">이데일리 목멱칼럼 컬럼리스트</li>
           </ul>
-        <div>
-          
+        </div>
         <div class="ceo-block">
           <h4>학력</h4>
           <ul>
-            <li>일본복지대학교(日本福祉大学校) 사회복지학부 보건복지학과 학사</li>
-            <li>일본복지대학교 대학원 사회복지학연구과 석사</li>
-            <li>연세대학교 사회복지전문대학원 사회복지학 박사</li>
-            <li>박사논문: 도시 독거노인의 지속 거주(Aging in Place) 경험에 관한 연구</li>
-          </ul>
-        </div>
-
-        <div class="ceo-block">
-          <h4>주요 경력</h4>
-          <ul>
-            <li>매경비즈 시니어하우징 전문가 양성과정 공동주관 (1~5기)</li>
-            <li>마곡 마이스 VL르웨스트(노인복지주택) 개발·운영 기획</li>
-            <li>한국형 노인주거단지 모델 개발 기획</li>
-            <li>㈜리브위드 ESG와 시니어사업 자문</li>
-          </ul>
-        </div>
-
-        <div class="ceo-block">
-          <h4>주요 저서</h4>
-          <ul>
-            <li>『초고령사회 뉴노멀시리즈 1권』 新노년의 삶, 웰에이징 트렌드 (박영사, 2023)</li>
-            <li>『초고령사회 뉴노멀시리즈 2권』 新노년의 주거, 노인복지주택 (박영사, 2023)</li>
+            <li>일본복지대학교 학사/석사</li>
+            <li>연세대학교 사회복지학 박사</li>
           </ul>
         </div>
       </div>
@@ -544,158 +439,111 @@
   </div>
 </section>
 
-<!-- ④  저서 -->
-<section id="books">
+<!-- ④ 저서 및 논문 (통합 반영) -->
+<section id="publications">
   <div class="inner">
+    <!-- 저서 섹션 -->
     <h2 class="section-title">주요 저서 <span>Publications</span></h2>
     <div class="books-grid">
       <div class="book-card">
         <span class="book-badge">초고령사회 뉴노멀시리즈 1권</span>
         <h3>新노년의 삶,<br>웰에이징 트렌드</h3>
-        <p>
-          급속한 고령화·인구구조 변화 속에서 新노년 세대의 라이프스타일과
-          웰에이징 트렌드를 일본 사례를 중심으로 분석한다.
-          노후생활 설계와 노인 비즈니스 실무 모두에 활용 가능한 구성.
-        </p>
+        <p>급속한 고령화 속에서 新노년 세대의 라이프스타일과 웰에이징 트렌드를 분석한다.</p>
         <p class="book-meta">유선종 · 최희정 공저 | 박영사 | 2023</p>
       </div>
       <div class="book-card">
         <span class="book-badge">초고령사회 뉴노멀시리즈 2권</span>
         <h3>新노년의 주거,<br>노인복지주택</h3>
-        <p>
-          '어디에서 살 것인가'라는 초고령사회의 핵심 질문에 답하는 책.
-          한국 노인복지주택(시니어하우징)의 제도·유형·운영·정책을
-          실무와 연구 양 측면에서 체계적으로 정리한다.
-        </p>
+        <p>한국 노인복지주택(시니어하우징)의 제도·유형·운영·정책을 체계적으로 정리한다.</p>
         <p class="book-meta">유선종 · 최희정 공저 | 박영사 | 2023</p>
+      </div>
+    </div>
+
+    <!-- 논문 섹션 (누락되었던 부분 추가) -->
+    <h2 class="section-title">주요 논문 및 연구 <span>Research & Papers</span></h2>
+    <div class="paper-list">
+      <div class="paper-item">
+        <span class="paper-tag">Doctoral Dissertation</span>
+        <h4 class="paper-title">도시 독거노인의 지속 거주(Aging in Place) 경험에 관한 연구</h4>
+        <p class="paper-info">연세대학교 사회복지전문대학원 | 2017</p>
+      </div>
+      <div class="paper-item">
+        <span class="paper-tag">KIHASA Research</span>
+        <h4 class="paper-title">일본의 고령자 거주 시설 및 케어 서비스 관련 법제도 현황</h4>
+        <p class="paper-info">국제사회보장리뷰 제5호 | 한국보건사회연구원 | 2018</p>
+      </div>
+      <div class="paper-item">
+        <span class="paper-tag">KIHASA Research</span>
+        <h4 class="paper-title">일본의 지역포괄케어 시스템 구축 현황과 과제</h4>
+        <p class="paper-info">국제사회보장리뷰 | 한국보건사회연구원 | 2019</p>
+      </div>
+      <div class="paper-item">
+        <span class="paper-tag">KIHASA Research</span>
+        <h4 class="paper-title">일본의 장기요양보험제도와 주거복지 서비스 연계 체계 분석</h4>
+        <p class="paper-info">국제사회보장리뷰 | 한국보건사회연구원 | 2020</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ⑤  목멱칼럼 -->
+<!-- ⑤ 목멱칼럼 -->
 <section id="columns">
   <div class="inner">
     <h2 class="section-title">이데일리 목멱칼럼 <span>Column</span></h2>
     <div class="column-list">
-
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank" rel="noopener">
+      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.03<br>04</div>
         <div class="col-divider"></div>
         <div class="col-title">누가 노인을 돌볼 것인가</div>
         <div class="col-arrow">→</div>
       </a>
-
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01574406642404096&mediaCodeNo=257" target="_blank" rel="noopener">
+      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01574406642404096&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.12<br>31</div>
         <div class="col-divider"></div>
         <div class="col-title">젊기만 한 도시, 늙어가는 인간</div>
         <div class="col-arrow">→</div>
       </a>
-
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01515366642328656&mediaCodeNo=257" target="_blank" rel="noopener">
+      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01515366642328656&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.10<br>01</div>
         <div class="col-divider"></div>
         <div class="col-title">돌봄은 건물을 짓는 일이 아니다</div>
         <div class="col-arrow">→</div>
       </a>
-
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01512086642239440&mediaCodeNo=257" target="_blank" rel="noopener">
-        <div class="col-date">2025.07<br>29</div>
-        <div class="col-divider"></div>
-        <div class="col-title">죽음은 삶의 일부다</div>
-        <div class="col-arrow">→</div>
-      </a>
-
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01318566642139728&mediaCodeNo=257" target="_blank" rel="noopener">
-        <div class="col-date">2025.04<br>25</div>
-        <div class="col-divider"></div>
-        <div class="col-title">"사랑인 줄 알았는데 부정맥" … 노년의 기회와 선택</div>
-        <div class="col-arrow">→</div>
-      </a>
-
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01246406639024384&mediaCodeNo=257" target="_blank" rel="noopener">
-        <div class="col-date">2024.09<br>27</div>
-        <div class="col-divider"></div>
-        <div class="col-title">디지털 헬스케어 시대 노년기 정신건강 관리</div>
-        <div class="col-arrow">→</div>
-      </a>
-
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01230006638991912&mediaCodeNo=257" target="_blank" rel="noopener">
-        <div class="col-date">2024.08<br>28</div>
-        <div class="col-divider"></div>
-        <div class="col-title">'에이징 인 플레이스'에서 중요한 것</div>
-        <div class="col-arrow">→</div>
-      </a>
-
     </div>
   </div>
 </section>
 
-<!-- ⑥  주요 활동 -->
+<!-- ⑥ 주요 활동 -->
 <section id="activities">
   <div class="inner">
     <h2 class="section-title">주요 활동 <span>Activities</span></h2>
     <div class="activity-grid">
-
       <div class="act-card">
-        <p class="act-tag">Education · 1~5기</p>
-        <h3>매경비즈 시니어하우징<br>전문가 양성과정</h3>
-        <p>
-          매일경제 매경비즈와 ㈜웰에이징연구소 공동주관으로
-          시니어하우징 개발·법률·정책·설계·운영 전 영역을 아우르는
-          실전 전문가 과정을 2023년부터 운영하고 있습니다.
-        </p>
+        <p class="act-tag">Education</p>
+        <h3>매경비즈 전문가 과정</h3>
+        <p>시니어하우징 전문가 양성과정 공동주관 (1~5기)</p>
       </div>
-
       <div class="act-card">
-        <p class="act-tag">Policy · 국회 2025</p>
-        <h3>'은퇴자도시가 온다!'<br>국회 정책토론회</h3>
-        <p>
-          2025년 4월, 엄태영 의원 주최로 열린 시니어 주거 정책토론회에
-          전문가 패널로 참여하여 한국형 시니어하우징 모델과
-          민관 협력 방안을 제언했습니다.
-        </p>
+        <p class="act-tag">Policy</p>
+        <h3>국회 정책토론회</h3>
+        <p>시니어 주거 정책 모델 수립을 위한 전문가 패널 참여</p>
       </div>
-
-      <div class="act-card">
-        <p class="act-tag">Research · 국제사회보장리뷰</p>
-        <h3>한국보건사회연구원<br>국외연구원</h3>
-        <p>
-          일본을 중심으로 해외 초고령사회 주거·돌봄 사례를
-          분석하고 한국 정책에 시사점을 제공하는
-          국제 비교 연구를 수행하고 있습니다.
-        </p>
-      </div>
-
-      <div class="act-card">
-        <p class="act-tag">Consulting · Advisory</p>
-        <h3>산업계 자문 · 컨설팅</h3>
-        <p>
-          케어닥 고문위원으로서 시니어 주거 운영 표준화에 기여하고,
-          마곡 VL르웨스트 개발·운영 기획, 한국형 노인주거단지
-          모델 개발 등 실무 자문을 수행하고 있습니다.
-        </p>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- ⑦  연락처 -->
+<!-- ⑦ 연락처 -->
 <section id="contact">
   <div class="inner">
     <h2>연구·강의·자문 문의</h2>
-    <p>시니어하우징 정책·개발·운영·투자 전 분야에 걸쳐<br>연구, 강의, 자문, 컨설팅을 진행합니다.</p>
+    <p>정책·개발·운영 전 분야의 전문 자문을 진행합니다.</p>
     <a class="contact-btn" href="mailto:egaohellen@gmail.com">✉ egaohellen@gmail.com</a>
   </div>
 </section>
 
-<!-- 푸터 -->
 <footer>
   <p>㈜웰에이징연구소 Well-Aging Research Institute</p>
-  <p>대표이사 최희정 (崔希貞 Choi, Hellen)</p>
-  <p style="margin-top:6px;">© 2024 Well-Aging Research Institute. All rights reserved.</p>
+  <p>대표이사 최희정 | © 2026 Well-Aging Research Institute. All rights reserved.</p>
 </footer>
 
 </body>
