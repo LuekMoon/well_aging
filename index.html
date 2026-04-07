@@ -278,7 +278,65 @@
       font-size: 1rem;
       opacity: 0.6;
     }
+    /* ── 저서 및 논문 ── */
+    #publications { background: #fff; }
+    .books-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px; }
+    .book-card {
+      border: 1.5px solid var(--line);
+      border-radius: 16px;
+      padding: 35px 30px;
+      transition: all 0.3s ease;
+    }
+    .book-card:hover {
+      box-shadow: 0 15px 35px rgba(30,95,170,0.1);
+      border-color: var(--blue-light);
+    }
+    .book-badge {
+      display: inline-block;
+      background: var(--blue-dark);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+    .book-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--blue-dark); margin-bottom: 12px; }
+    .book-meta { margin-top: 18px; font-size: 0.85rem; color: var(--blue-light); font-weight: 600; }
 
+    /* 논문 리스트 스타일 */
+    .paper-list { display: flex; flex-direction: column; gap: 12px; }
+    .paper-item {
+      padding: 18px 24px;
+      background: #fdfdfd;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .paper-item:hover { border-color: var(--blue-mid); background: #fff; }
+    .paper-tag { font-size: 0.7rem; font-weight: 800; color: var(--blue-mid); text-transform: uppercase; }
+    .paper-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+    .paper-info { font-size: 0.85rem; color: var(--text-gray); }
+
+    /* ── 칼럼 ── */
+    #columns { background: var(--blue-pale); }
+    .column-list { display: flex; flex-direction: column; gap: 15px; }
+    .column-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid var(--line);
+      transition: all 0.2s;
+    }
+    .column-item:hover { transform: scale(1.01); border-color: var(--blue-light); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .col-date { min-width: 80px; font-size: 0.8rem; color: var(--blue-light); font-weight: 700; text-align: center; }
+    .col-title { font-size: 1rem; font-weight: 600; color: var(--text-dark); }
+    .col-arrow { margin-left: auto; color: var(--blue-light); font-weight: bold; }
     /* ── 주요 활동 ── */
     #activities { background: #fff; }
     .activity-grid {
