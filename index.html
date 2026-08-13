@@ -219,48 +219,21 @@
       box-shadow: 0 8px 28px rgba(30,95,170,0.12);
       border-color: var(--blue-light);
     }
-    /* 미리보기 그래픽 커버 */
-    .book-preview-cover {
-      width: 110px;
-      min-width: 110px;
-      height: 155px;
-      background: linear-gradient(145deg, #1a3a6b, #1e5faa);
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 12px;
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      position: relative;
+    .book-cover-img {
+      width: 90px !important;
+      min-width: 90px !important;
+      height: 130px !important;
+      flex-shrink: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
-    .book-preview-cover::after {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 5px;
-      background: rgba(0,0,0,0.2);
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
+    .book-cover-img img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      display: block;
     }
-    .preview-vol {
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      opacity: 0.9;
-    }
-    .preview-sub {
-      font-size: 0.68rem;
-      line-height: 1.25;
-      font-weight: 600;
-      word-break: keep-all;
-    }
-    .preview-author {
-      font-size: 0.6rem;
-      opacity: 0.8;
-      text-align: right;
-    }
-
     .book-content {
       flex: 1;
       display: flex;
@@ -316,7 +289,7 @@
     }
 
     /* 논문 리스트 스타일 */
-    .paper-list { display: flex; flex-direction: column; gap: 12px; }
+    .paper-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
     .paper-item {
       padding: 18px 24px;
       background: #fdfdfd;
@@ -456,43 +429,10 @@
     /* ── 반응형 ── */
     @media (max-width: 640px) {
       .about-grid, .old-books-grid, .activity-grid { grid-template-columns: 1fr; }
-      .book-card { flex-direction: column; align-items: center; }
-      .book-preview-cover { width: 130px; height: 180px; }
+      .book-card { flex-direction: row; align-items: flex-start; gap: 16px; }
+      .book-cover-img { width: 75px !important; min-width: 75px !important; height: 108px !important; }
       .ceo-wrap { flex-direction: column; align-items: center; text-align: center; }
       .col-date { min-width: 85px; font-size: 0.8rem; }
-    }
-    /* ── 기존 스타일 코드들 ── */
-
-    /* [여기 위치!] 책 표지 이미지 크기 조절 CSS */
-    .book-cover-img {
-      width: 90px !important;       /* 가로 너비 90px 고정 */
-      min-width: 90px !important;   /* 최소 너비 고정 */
-      height: 130px !important;     /* 세로 높이 130px 고정 */
-      flex-shrink: 0;               /* 이미지 모양이 눌리지 않게 고정 */
-      overflow: hidden;
-      border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    }
-
-    .book-cover-img img {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: cover;            /* 박스 비율에 맞춰 이쁘게 잘라냄 */
-      display: block;
-    }
-
-    /* 모바일 화면 대응 */
-    @media (max-width: 640px) {
-      .book-card {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 16px;
-      }
-      .book-cover-img {
-        width: 75px !important;     /* 모바일에서는 더 작게 75px */
-        min-width: 75px !important;
-        height: 108px !important;
-      }
     }
   </style>
 </head>
@@ -570,15 +510,14 @@
   </div>
 </section>
 
-<!-- ④ 저서 및 논문 -->
+<!-- ④ 저서 및 논문 (배경: 흰색) -->
 <section id="publications">
   <div class="inner">
     <h2 class="section-title">주요 저서 <span>Publications</span></h2>
     
-
-<!-- 신간 시리즈 타이틀 -->
+    <!-- 신간 시리즈 타이틀 -->
     <div class="series-title-box">
-      <h3>[신간 시리즈]일본의 14년, 한국의 10년 - 초고령사회 시니어주거 시장 설계 시리즈 (전 3권)</h3>
+      <h3>[신간 시리즈] 일본의 14년, 한국의 10년 - 초고령사회 시니어주거 시장 설계 시리즈 (전 3권)</h3>
       <p>정책 입안자·투자자·사업자를 위한 한·일 시니어주거 통합 구조 분석서 (다윈의 서재)</p>
     </div>
 
@@ -586,7 +525,7 @@
       <!-- 신간 1권 -->
       <a href="https://www.yes24.com/product/goods/195026120" target="_blank" class="book-card">
         <div class="book-cover-img">
-          <img src="book_1.JPG" alt="1권 표지: 한국 시니어주거 시장 진단과 일본 서고주 비교" class="shadow-md rounded">
+          <img src="book_1.JPG" alt="1권 표지" class="shadow-md rounded">
         </div>
         <div class="book-content">
           <div>
@@ -596,7 +535,7 @@
           </div>
           <div class="book-meta">
             <span>최희정 지음 | 다윈의 서재</span>
-            <span class="btn-yes24">도서 상세보기</span>
+            <span class="btn-yes24">도서 상세보기 ↗</span>
           </div>
         </div>
       </a>
@@ -604,7 +543,7 @@
       <!-- 신간 2권 -->
       <a href="https://www.yes24.com/product/goods/195026125" target="_blank" class="book-card">
         <div class="book-cover-img">
-          <img src="book_2.JPG" alt="2권 표지: 일본 시니어주거 4대 기업 사업모델 및 구조 분석" class="shadow-md rounded">
+          <img src="book_2.JPG" alt="2권 표지" class="shadow-md rounded">
         </div>
         <div class="book-content">
           <div>
@@ -614,7 +553,7 @@
           </div>
           <div class="book-meta">
             <span>최희정 지음 | 다윈의 서재</span>
-            <span class="btn-yes24">도서 상세보기</span>
+            <span class="btn-yes24">도서 상세보기 ↗</span>
           </div>
         </div>
       </a>
@@ -622,7 +561,7 @@
       <!-- 신간 3권 -->
       <a href="https://www.yes24.com/product/goods/195026156" target="_blank" class="book-card">
         <div class="book-cover-img">
-          <img src="book_3.JPG" alt="3권 표지: 한국형 서비스결합주택(K-SCH) 설계" class="shadow-md rounded">
+          <img src="book_3.JPG" alt="3권 표지" class="shadow-md rounded">
         </div>
         <div class="book-content">
           <div>
@@ -632,13 +571,13 @@
           </div>
           <div class="book-meta">
             <span>최희정 지음 | 다윈의 서재</span>
-            <span class="btn-yes24">도서 상세보기</span>
+            <span class="btn-yes24">도서 상세보기 ↗</span>
           </div>
         </div>
       </a>
     </div>
 
-    <!-- 기존 저서 섹션 -->
+    <!-- 기존 저서 -->
     <div style="margin-top: 40px; margin-bottom: 20px;">
       <h3 style="font-size: 1.1rem; color: var(--blue-dark); font-weight: 700;">초고령사회 뉴노멀 시리즈</h3>
     </div>
@@ -664,14 +603,12 @@
         </div>
       </div>
     </div>
-  </div>
 
-
-    <!-- 논문 섹션 -->
-  <section id="columns">
-  <div class="inner">
-    <h2 class="section-title">주요 논문 및 연구 <span>Research & Papers</span></h2>
-    <div class="inner">
+    <!-- 논문 및 연구 -->
+    <div style="margin-top: 60px; margin-bottom: 20px;">
+      <h2 class="section-title">주요 논문 및 연구 <span>Research & Papers</span></h2>
+    </div>
+    <div class="paper-list">
       <a href="https://library.yonsei.ac.kr/" target="_blank" class="paper-item">
         <span class="paper-tag">Doctoral Dissertation</span>
         <h4 class="paper-title">도시 독거노인의 지속 거주(Aging in Place) 경험에 관한 연구 <span class="paper-link-icon">↗</span></h4>
@@ -717,14 +654,12 @@
   </div>
 </section>
 
-<!-- ⑤ 목멱칼럼 -->
+<!-- ⑤ 목멱칼럼 (배경: 연한 푸른색) -->
 <section id="columns">
   <div class="inner">
-    <!-- ⑤ 목멱칼럼 (최신 기고문 목록) -->
     <h2 class="section-title">이데일리 목멱칼럼 <span>Column</span></h2>
     <div class="column-list">
 
-      <!-- 2026.08.10 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01436646645546008&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.08.10</div>
         <div class="col-divider"></div>
@@ -732,7 +667,6 @@
         <div class="col-arrow">→</div>
       </a>
 
-      <!-- 2026.06.29 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01400566645486640&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.06.29</div>
         <div class="col-divider"></div>
@@ -740,7 +674,6 @@
         <div class="col-arrow">→</div>
       </a>
 
-      <!-- 2026.06.17 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=02138566645482704&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.06.17</div>
         <div class="col-divider"></div>
@@ -748,7 +681,6 @@
         <div class="col-arrow">→</div>
       </a>
 
-      <!-- 2026.04.07 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.04.07</div>
         <div class="col-divider"></div>
@@ -756,7 +688,6 @@
         <div class="col-arrow">→</div>
       </a>
 
-      <!-- 2026.03.04 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.03.04</div>
         <div class="col-divider"></div>
@@ -764,7 +695,6 @@
         <div class="col-arrow">→</div>
       </a>
 
-      <!-- 2025.12.31 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01574406642404096&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.12.31</div>
         <div class="col-divider"></div>
@@ -785,8 +715,7 @@
         <div class="col-title">죽음은 삶의 일부다</div>
         <div class="col-arrow">→</div>
       </a>
-      
-      </a>
+
     </div>
   </div>
 </section>
