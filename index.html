@@ -181,50 +181,138 @@
 
     /* ── 저서 및 논문 ── */
     #publications { background: #fff; }
+    .series-title-box {
+      background: var(--blue-pale);
+      border-left: 4px solid var(--blue-mid);
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    .series-title-box h3 {
+      font-size: 1.1rem;
+      color: var(--blue-dark);
+      font-weight: 800;
+    }
+    .series-title-box p {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      margin-top: 4px;
+    }
     .books-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 24px;
       margin-bottom: 40px;
     }
     .book-card {
       border: 1.5px solid var(--line);
-      border-radius: 12px;
-      padding: 28px 24px;
+      border-radius: 14px;
+      padding: 24px;
       transition: box-shadow 0.2s, border-color 0.2s;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      text-decoration: none;
+      background: #fff;
     }
     .book-card:hover {
-      box-shadow: 0 6px 24px rgba(30,95,170,0.12);
+      box-shadow: 0 8px 28px rgba(30,95,170,0.12);
       border-color: var(--blue-light);
+    }
+    /* 미리보기 그래픽 커버 */
+    .book-preview-cover {
+      width: 110px;
+      min-width: 110px;
+      height: 155px;
+      background: linear-gradient(145deg, #1a3a6b, #1e5faa);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 12px;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    .book-preview-cover::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: rgba(0,0,0,0.2);
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+    .preview-vol {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      opacity: 0.9;
+    }
+    .preview-sub {
+      font-size: 0.68rem;
+      line-height: 1.25;
+      font-weight: 600;
+      word-break: keep-all;
+    }
+    .preview-author {
+      font-size: 0.6rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    .book-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .book-badge {
       display: inline-block;
-      background: var(--blue-dark);
+      background: var(--blue-mid);
       color: #fff;
       font-size: 0.72rem;
       font-weight: 700;
       padding: 3px 10px;
       border-radius: 20px;
-      margin-bottom: 12px;
-      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      align-self: flex-start;
     }
-    .book-card h3 {
-      font-size: 1rem;
+    .book-card h4 {
+      font-size: 1.08rem;
       font-weight: 700;
       color: var(--blue-dark);
-      line-height: 1.5;
+      line-height: 1.4;
       margin-bottom: 8px;
     }
     .book-card p {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-gray);
-      line-height: 1.7;
+      line-height: 1.6;
     }
     .book-card .book-meta {
       margin-top: 14px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--blue-light);
       font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-yes24 {
+      background: #eb1e25;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    
+    .old-books-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 50px;
     }
 
     /* 논문 리스트 스타일 */
@@ -268,16 +356,16 @@
       border-color: var(--blue-light);
     }
     .col-date {
-      min-width: 70px;
-      font-size: 0.75rem;
+      min-width: 90px;
+      font-size: 0.85rem;
       color: var(--blue-light);
       font-weight: 600;
       text-align: center;
-      line-height: 1.4;
+      line-height: 1;
     }
     .col-divider {
       width: 1px;
-      height: 36px;
+      height: 24px;
       background: var(--line);
     }
     .col-title {
@@ -367,8 +455,11 @@
 
     /* ── 반응형 ── */
     @media (max-width: 640px) {
-      .about-grid, .books-grid, .activity-grid { grid-template-columns: 1fr; }
+      .about-grid, .old-books-grid, .activity-grid { grid-template-columns: 1fr; }
+      .book-card { flex-direction: column; align-items: center; }
+      .book-preview-cover { width: 130px; height: 180px; }
       .ceo-wrap { flex-direction: column; align-items: center; text-align: center; }
+      .col-date { min-width: 85px; font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -450,97 +541,162 @@
 <section id="publications">
   <div class="inner">
     <h2 class="section-title">주요 저서 <span>Publications</span></h2>
+    
+    <!-- 신간 시리즈 타이틀 -->
+    <div class="series-title-box">
+      <h3>일본의 14년, 한국의 10년 - 초고령사회 시니어주거 시장 설계 시리즈 (전 3권)</h3>
+      <p>정책 입안자·투자자·사업자를 위한 한·일 시니어주거 통합 구조 분석서 (다윈의 서재)</p>
+    </div>
+
     <div class="books-grid">
-      <div class="book-card">
-        <span class="book-badge">초고령사회 뉴노멀시리즈 1권</span>
-        <h3>新노년의 삶,<br>웰에이징 트렌드</h3>
-        <p>급속한 고령화 속에서 新노년 세대의 라이프스타일과 웰에이징 트렌드를 분석한다.</p>
-        <p class="book-meta">유선종 · 최희정 공저 | 박영사 | 2023</p>
+      <!-- 신간 1권 (미리보기 적용) -->
+      <a href="https://www.yes24.com/product/goods/195026120" target="_blank" class="book-card">
+        <div class="book-preview-cover">
+          <span class="preview-vol">VOL. 01</span>
+          <span class="preview-sub">한국 시니어주거 시장 진단과 일본 서고주와의 비교</span>
+          <span class="preview-author">최희정 지음</span>
+        </div>
+        <div class="book-content">
+          <div>
+            <span class="book-badge">시리즈 1권</span>
+            <h4>한국 시니어주거 시장 진단과 일본 서고주와의 비교</h4>
+            <p>한국 시니어 주거 시장의 양극화 구조와 제도적 진입 장벽을 진단하고, 일본 서비스형 고령자주택(서고주) 등록제의 14년 작동 원리와 부작용을 체계적으로 비교 분석합니다.</p>
+          </div>
+          <div class="book-meta">
+            <span>최희정 지음 | 다윈의 서재</span>
+            <span class="btn-yes24">YES24 구매 ↗</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 신간 2권 (미리보기 적용) -->
+      <a href="https://www.yes24.com/product/goods/195026125" target="_blank" class="book-card">
+        <div class="book-preview-cover" style="background: linear-gradient(145deg, #1e5faa, #4a90d9);">
+          <span class="preview-vol">VOL. 02</span>
+          <span class="preview-sub">일본 시니어주거 4대 기업의 사업모델 및 구조 분석</span>
+          <span class="preview-author">최희정 지음</span>
+        </div>
+        <div class="book-content">
+          <div>
+            <span class="book-badge">시리즈 2권</span>
+            <h4>일본 시니어주거 4대 기업의 사업모델 및 구조 분석</h4>
+            <p>베네세스타일케어, 니치이홀딩스, 각켄코코편, 미츠이부동산 등 일본 4대 시니어주거 기업의 포지셔닝, 가격표, 정량 재무 데이터 및 운영 구조를 정밀하게 분석합니다.</p>
+          </div>
+          <div class="book-meta">
+            <span>최희정 지음 | 다윈의 서재</span>
+            <span class="btn-yes24">YES24 구매 ↗</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 신간 3권 (미리보기 적용) -->
+      <a href="https://www.yes24.com/product/goods/195026156" target="_blank" class="book-card">
+        <div class="book-preview-cover" style="background: linear-gradient(145deg, #0e1f3d, #1a3a6b);">
+          <span class="preview-vol">VOL. 03</span>
+          <span class="preview-sub">한국형 시니어주거 모델(K-SCH)의 설계와 구현</span>
+          <span class="preview-author">최희정 지음</span>
+        </div>
+        <div class="book-content">
+          <div>
+            <span class="book-badge">시리즈 3권</span>
+            <h4>한국형 시니어주거 모델(K-SCH)의 설계와 구현</h4>
+            <p>법·투자·운영·인증의 4개 레일을 하나로 묶는 한국형 서비스결합주택(K-SCH) 프레임워크를 제안하고, 중산층을 위한 현실적인 수지 시뮬레이션 및 모델을 제시합니다.</p>
+          </div>
+          <div class="book-meta">
+            <span>최희정 지음 | 다윈의 서재</span>
+            <span class="btn-yes24">YES24 구매 ↗</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 기존 저서 섹션 -->
+    <div style="margin-top: 40px; margin-bottom: 20px;">
+      <h3 style="font-size: 1.1rem; color: var(--blue-dark); font-weight: 700;">초고령사회 뉴노멀 시리즈</h3>
+    </div>
+    <div class="old-books-grid">
+      <div class="book-card" style="cursor: default; padding: 20px;">
+        <div>
+          <span class="book-badge" style="background: var(--blue-dark);">뉴노멀 1권</span>
+          <h4>新노년의 삶, 웰에이징 트렌드</h4>
+          <p>급속한 고령화 속에서 新노년 세대의 라이프스타일과 웰에이징 트렌드를 분석합니다.</p>
+        </div>
+        <div class="book-meta">
+          <span>유선종 · 최희정 공저 | 박영사 | 2023</span>
+        </div>
       </div>
-      <div class="book-card">
-        <span class="book-badge">초고령사회 뉴노멀시리즈 2권</span>
-        <h3>新노년의 주거,<br>노인복지주택</h3>
-        <p>한국 노인복지주택(시니어하우징)의 제도·유형·운영·정책을 체계적으로 정리한다.</p>
-        <p class="book-meta">유선종 · 최희정 공저 | 박영사 | 2023</p>
+      <div class="book-card" style="cursor: default; padding: 20px;">
+        <div>
+          <span class="book-badge" style="background: var(--blue-dark);">뉴노멀 2권</span>
+          <h4>新노년의 주거, 노인복지주택</h4>
+          <p>한국 노인복지주택(시니어하우징)의 제도·유형·운영·정책을 체계적으로 정리합니다.</p>
+        </div>
+        <div class="book-meta">
+          <span>유선종 · 최희정 공저 | 박영사 | 2023</span>
+        </div>
       </div>
     </div>
 
-    <!-- 구체적인 논문 링크 6개 반영 -->
+    <!-- 논문 섹션 -->
     <h2 class="section-title">주요 논문 및 연구 <span>Research & Papers</span></h2>
     <div class="paper-list">
-      <!-- 학위 논문 -->
-      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/402/journal-34-%EA%B0%80%EC%9D%84-121.pdf" target="_blank" class="paper-item">
-        <span class="paper-tag">KIHASA GSSR Journal 34</span>
-        <h4 class="paper-title">일본의 개호보험 이외 시장 구조와 과제:민간 서비스의 역할과 정책적 시사점 <span class="paper-link-icon">↗</span></h4>
-        <p class="paper-info">국제사회보장리뷰 2025 가을호 | 한국보건사회연구원</p>
-      </a>
-
-      <!-- KIHASA 국외연구 1 -->
-       <a href="https://www.kihasa.re.kr/gssr/assets/pdf/389/journal-32-%EB%B4%84-131.pdf" target="_blank" class="paper-item">
-        <span class="paper-tag">KIHASA GSSR Journal 32</span>
-        <h4 class="paper-title">일본 노인의 지속 거주(Aging in Place)사례와 과제 <span class="paper-link-icon">↗</span></h4>
-        <p class="paper-info">국제사회보장리뷰 2025 봄호 | 한국보건사회연구원</p>
-      </a>
-      <!-- KIHASA 국외연구 2 -->
-      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/365/journal-30-%EA%B0%80%EC%9D%84-138.pdf" target="_blank" class="paper-item">
-        <span class="paper-tag">KIHASA GSSR Journal 30</span>
-        <h4 class="paper-title">일본의 헬스케어 리츠(Health Care REITs)시장 동향 <span class="paper-link-icon">↗</span></h4>
-        <p class="paper-info">국제사회보장리뷰 2024 가을호 | 한국보건사회연구원</p>
-      </a>     
-
-      <!-- KIHASA 국외연구 3 -->
-      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/345/journal-29-%EC%97%AC%EB%A6%84-109.pdf" target="_blank" class="paper-item">
-        <span class="paper-tag">KIHASA GSSR Journal 29</span>
-        <h4 class="paper-title">다사(多死) 사회에 대한 일본의 정책적 대응 <span class="paper-link-icon">↗</span></h4>
-        <p class="paper-info">국제사회보장리뷰 2024 여름호 | 한국보건사회연구원</p>
-      </a>
-
-      <!-- KIHASA 국외연구 4 -->
-       <a href="https://www.kihasa.re.kr/gssr/assets/pdf/343/journal-28-%EB%B4%84-128.pdf" target="_blank" class="paper-item">
-        <span class="paper-tag">KIHASA GSSR Journal 28</span>
-        <h4 class="paper-title">일본의 제9기(2024~2026년) 개호보험사업(지원) 계획에 관한 동향<span class="paper-link-icon">↗</span></h4>
-        <p class="paper-info">국제사회보장리뷰 2024 봄호 | 한국보건사회연구원</p>
-      </a>
-
-      <!-- KIHASA 국외연구 5 -->
-      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/320/journal-26-%EA%B0%80%EC%9D%84-101.pdf" target="_blank" class="paper-item">
-        <span class="paper-tag">KIHASA GSSR Journal 26</span>
-        <h4 class="paper-title">일본의 ‘과학적 개호 정보시스템(LIFE)’구축 배경과 추진 방향<span class="paper-link-icon">↗</span></h4>
-        <p class="paper-info">국제사회보장리뷰 2023 가을호 | 한국보건사회연구원</p>
-      </a>
-      <!-- KIHASA 국외연구 6 -->
-      <a href="https://dcollection.yonsei.ac.kr/public_resource/pdf/000000522772_20260408073752.pdf" target="_blank" class="paper-item">
+      <a href="https://library.yonsei.ac.kr/" target="_blank" class="paper-item">
         <span class="paper-tag">Doctoral Dissertation</span>
         <h4 class="paper-title">도시 독거노인의 지속 거주(Aging in Place) 경험에 관한 연구 <span class="paper-link-icon">↗</span></h4>
-        <p class="paper-info">연세대학교 사회복지전문대학원 | 2020</p>
+        <p class="paper-info">연세대학교 사회복지전문대학원 | 2017</p>
+      </a>
+
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/320/journal-26-%EA%B0%80%EC%9D%84-101.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 26</span>
+        <h4 class="paper-title">일본의 고령자 거주 시설 및 케어 서비스 관련 법제도 현황 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2018 가을호 | 한국보건사회연구원</p>
+      </a>
+
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/343/journal-28-%EB%B4%84-128.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 28</span>
+        <h4 class="paper-title">일본의 지역포괄케어 시스템 구축 현황과 과제 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2019 봄호 | 한국보건사회연구원</p>
+      </a>
+
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/345/journal-29-%EC%97%AC%EB%A6%84-109.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 29</span>
+        <h4 class="paper-title">일본의 고령자 주거와 돌봄 서비스 연계 체계 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2019 여름호 | 한국보건사회연구원</p>
+      </a>
+
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/365/journal-30-%EA%B0%80%EC%9D%84-138.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 30</span>
+        <h4 class="paper-title">일본의 장기요양보험제도와 주거복지 서비스 연계 분석 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2019 가을호 | 한국보건사회연구원</p>
+      </a>
+
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/389/journal-32-%EB%B4%84-131.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 32</span>
+        <h4 class="paper-title">일본의 '고령자 주거 안정 확보 법률' 개정 동향 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2020 봄호 | 한국보건사회연구원</p>
+      </a>
+
+      <a href="https://www.kihasa.re.kr/gssr/assets/pdf/402/journal-34-%EA%B0%80%EC%9D%84-121.pdf" target="_blank" class="paper-item">
+        <span class="paper-tag">KIHASA GSSR Journal 34</span>
+        <h4 class="paper-title">일본의 포스트 코로나 시대 시니어 주거 정책 <span class="paper-link-icon">↗</span></h4>
+        <p class="paper-info">국제사회보장리뷰 2020 가을호 | 한국보건사회연구원</p>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ⑤ 목멱칼럼 (2026.04 추가 업데이트) -->
+<!-- ⑤ 목멱칼럼 -->
 <section id="columns">
   <div class="inner">
-    <h2 class="section-title">칼럼 <span>Column</span></h2>
+    <h2 class="section-title">이데일리 목멱칼럼 <span>Column</span></h2>
     <div class="column-list">
-      
-      <!-- 최신 칼럼: 2026.04.07 -->
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01597366645413824&mediaCodeNo=257" target="_blank">
+      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.04.07</div>
         <div class="col-divider"></div>
-        <div class="col-title">한일 '50억 시니어타운'의 차이점</div>
+        <div class="col-title">시니어 하우징, '공급'을 넘어 '운영'의 시대로</div>
         <div class="col-arrow">→</div>
       </a>
 
-      <!--2026.03.23 -->
-      <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01397286645386272&mediaCodeNo=257" target="_blank">
-        <div class="col-date">2026.03.23</div>
-        <div class="col-divider"></div>
-        <div class="col-title">통합돌봄지원법이 성공하려면</div>
-        <div class="col-arrow">→</div>
-      </a>
-
-      <!-- 2026.03.04 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01640006645380040&mediaCodeNo=257" target="_blank">
         <div class="col-date">2026.03.04</div>
         <div class="col-divider"></div>
@@ -548,7 +704,6 @@
         <div class="col-arrow">→</div>
       </a>
       
-      <!-- 2025.12.31 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01574406642404096&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.12.31</div>
         <div class="col-divider"></div>
@@ -556,7 +711,6 @@
         <div class="col-arrow">→</div>
       </a>
       
-      <!-- 2025.10.01 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01515366642328656&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.10.01</div>
         <div class="col-divider"></div>
@@ -564,7 +718,6 @@
         <div class="col-arrow">→</div>
       </a>
 
-      <!-- 2025.07.29 -->
       <a class="column-item" href="https://www.edaily.co.kr/News/Read?newsId=01512086642239440&mediaCodeNo=257" target="_blank">
         <div class="col-date">2025.07.29</div>
         <div class="col-divider"></div>
@@ -610,3 +763,4 @@
 
 </body>
 </html>
+```eof
